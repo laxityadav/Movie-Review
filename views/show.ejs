@@ -1,0 +1,64 @@
+<% layout('./boilerplate')%>
+    <link rel="stylesheet" href="/stars.css">
+
+    <div class="card mb-3">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="https://image.tmdb.org/t/p/w500<%=value.poster_path%>" class="img-fluid" alt="no image">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="card-title">
+                        <%=value.title%>
+                    </h3>
+                    <p class="card-text">Tagline = <%=value.tagline%>
+                    </p>
+                    <p class="card-text">Rating = <%=value.vote_average%>
+                    </p>
+                    <p class="card-text">Vote Count = <%=value.vote_count%>
+                    </p>
+                    <p class="card-text">Realease Date = <%=value.release_date%>
+                    </p>
+                    <p class="card-text">Movie Budget = $<%=value.budget%>
+                    </p>
+                    <p class="card-text">Revenue Generated = $<%=value.revenue%>
+                    </p>
+                    <p class="card-text">RunTime = <%=value.runtime%> minutes</p>
+                    <p class="card-text">
+                        About = <%=value.overview%>
+                    </p>
+                    <br>
+                    <br>
+
+                    <form action="/" method="POST" class="mb-3 validated-form" novalidate>
+                        <fieldset class="starability-basic">
+                            <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="1" checked
+                                aria-label="No rating." />
+                            <input type="radio" id="first-rate1" name="rating" value="1" />
+                            <label for="first-rate1" title="Terrible">1 star</label>
+                            <input type="radio" id="first-rate2" name="rating" value="2" />
+                            <label for="first-rate2" title="Terrible">2 stars</label>
+                            <input type="radio" id="first-rate3" name="rating" value="3" />
+                            <label for="first-rate3" title="Not good">3 stars</label>
+                            <input type="radio" id="first-rate4" name="rating" value="4" />
+                            <label for="first-rate4" title="Not good">4 stars</label>
+                            <input type="radio" id="first-rate5" name="rating" value="5" />
+                            <label for="first-rate5" title="Average">5 stars</label>
+                            <input type="radio" id="first-rate6" name="rating" value="6" />
+                            <label for="first-rate6" title="Average">6 stars</label>
+                            <input type="radio" id="first-rate7" name="rating" value="7" />
+                            <label for="first-rate7" title="Very good">7 stars</label>
+                            <input type="radio" id="first-rate8" name="rating" value="8" />
+                            <label for="first-rate8" title="Very good">8 stars</label>
+                            <input type="radio" id="first-rate9" name="rating" value="9" />
+                            <label for="first-rate9" title="Amazing">9 stars</label>
+                            <input type="radio" id="first-rate10" name="rating" value="10" />
+                            <label for="first-rate10" title="Amazing">10 stars</label>
+                        </fieldset>
+                        <button class="btn btn-success">Submit</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>

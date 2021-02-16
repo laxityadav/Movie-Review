@@ -1,0 +1,37 @@
+<% layout('./boilerplate')%>
+
+    <div class="container mb-5 text-center">
+        <form action="/">
+            <h3 class="d-inline">Search a Movie</h3>
+            <input type="text" name="search" class="input-box" placeholder="Search" size="50">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+
+    <% for (let value of values){ %>
+        <div class="card mb-3">
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="https://image.tmdb.org/t/p/w200<%=value.poster_path%>" class="img-fluid ml-5"
+                        alt="no image">
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%=value.title%>
+                        </h5>
+                        <p class="card-text">Rating= <%=value.vote_average%>
+                        </p>
+                        <p class="card-text">People who voted= <%=value.vote_count%>
+                        </p>
+                        <p class="card-text">Realease Date= <%=value.release_date%>
+                        </p>
+                        <p class="card-text">
+                            <%=value.overview%>
+                        </p>
+                        <a href="/movie/<%=value.id%>" class="btn btn-primary">More Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
