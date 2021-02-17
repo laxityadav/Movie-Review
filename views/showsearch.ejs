@@ -1,0 +1,34 @@
+<% layout('./boilerplate')%>
+    <link rel="stylesheet" href="/stars.css">
+
+    <div class="card mb-3">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="https://image.tmdb.org/t/p/w500<%=value.poster_path%>" class="img-fluid" alt="no image">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="card-title">
+                        <%=value.title%>
+                    </h3>
+                    <p class="card-text">Tagline = <%=value.tagline%>
+                    </p>
+                    <p class="card-text">Rating = <%=value.vote_average%>
+                    </p>
+                    <p class="card-text">Vote Count = <%=value.vote_count%>
+                    </p>
+                    <p class="card-text">Realease Date = <%=value.release_date%>
+                    </p>
+                    <p class="card-text">Movie Budget = $<%=value.budget%>
+                    </p>
+                    <p class="card-text">Revenue Generated = $<%=value.revenue%>
+                    </p>
+                    <p class="card-text">RunTime = <%=value.runtime%> minutes</p>
+                    <p class="card-text">
+                        About = <%=value.overview%>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
