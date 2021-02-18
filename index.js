@@ -91,35 +91,11 @@ app.get('/', async (req, res) => {
     res.render('home', { values });
 });
 
-app.get('/abcd', async (req, res) => {
-    // const keyword = 'piranha';
-    // let url = ''.concat(baseURL, 'search/movie?api_key=', APIKEY, '&query=', keyword);
-    // const fetchResponse = await fetch(url);
-    // const data = await fetchResponse.json();
-    // const value = data.results[0];
-    // console.log(value);
-
-    const ids = 43593;
-    let url = `${baseURL}movie/${ids}?api_key=${APIKEY}`;
-    const fetchResponse = await fetch(url);
-    const value = await fetchResponse.json();
-
-    const { id, title, tagline, vote_average, vote_count, release_date, budget, revenue, runtime, overview, poster_path } = value;
-    const image = `${poster_path}`;
-    //console.log(value);
-    //console.log(id, title, tagline, vote_average, vote_count, release_date, budget, revenue, runtime);
-    const movieId = id;
-    const movie = new Movie({ movieId, title, tagline, vote_average, vote_count, release_date, budget, revenue, runtime, overview, image });
-    await movie.save();
-    res.render('home');
-});
-
 app.get('/show/:id', async (req, res) => {
     const movieId = req.params.id;
     const value = await Movie.findOne({ movieId });
     let hasRating = false;
     let rating = 0;
-    //console.log(req.user);
     if (req.user) {
         const user = await User.findById(req.user._id);
         for (let movie of user.movies) {
@@ -130,14 +106,12 @@ app.get('/show/:id', async (req, res) => {
             }
         }
     }
-    //console.log(hasRating, rating);
     res.render('show', { value, hasRating, rating });
 });
 
 app.post('/', isLoggedIn, async (req, res) => {
     const rating = req.body.rating;
     const movieId = req.body.movieId;
-    //console.log(rating, movieId, req.user._id);
     const user = await User.findByIdAndUpdate(req.user._id, {});
     user.movies.push({ movieId, rating });
     await user.save();
