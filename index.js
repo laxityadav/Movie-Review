@@ -125,8 +125,7 @@ app.get('/login', (req, res) => {
 
 app.get('/logout', async (req, res) => {
     req.logout();
-    const values = await Movie.find({});
-    res.render('home', { values });
+    res.redirect('/');
 });
 
 app.get('/register', (req, res) => {
@@ -134,8 +133,7 @@ app.get('/register', (req, res) => {
 });
 
 app.post('/login', passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }), async (req, res) => {
-    const values = await Movie.find({});
-    res.render('home', { values });
+    res.redirect('/');
 });
 
 app.post('/register', async (req, res) => {
